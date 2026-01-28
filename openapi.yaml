@@ -1,0 +1,196 @@
+openapi: 3.0.3
+info:
+  title: API
+  version: 1.0.0
+paths:
+  /health:
+    get:
+      tags:
+        - health
+      operationId: getHealth
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+  /health/ready:
+    get:
+      tags:
+        - health
+      operationId: getHealthReady
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+  /posts:
+    get:
+      tags:
+        - posts
+      operationId: getPosts
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+    post:
+      tags:
+        - posts
+      operationId: postPosts
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+  /posts/{id}:
+    get:
+      tags:
+        - posts
+      operationId: getPostsByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+  /users:
+    get:
+      tags:
+        - users
+      operationId: getUsers
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+    post:
+      tags:
+        - users
+      operationId: postUsers
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+  /users/{id}:
+    get:
+      tags:
+        - users
+      operationId: getUsersByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+    put:
+      tags:
+        - users
+      operationId: putUsersByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+    delete:
+      tags:
+        - users
+      operationId: deleteUsersByid
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+  /users/{userId}/posts:
+    get:
+      tags:
+        - users
+      operationId: getUsersByuseridPosts
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+components:
+  schemas:
+    Post:
+      type: object
+      title: Post
+      properties:
+        body:
+          type: string
+        id:
+          type: number
+        title:
+          type: string
+        userId:
+          type: number
+      required:
+        - id
+        - userId
+        - title
+        - body
+    User:
+      type: object
+      title: User
+      properties:
+        email:
+          type: string
+        id:
+          type: number
+        name:
+          type: string
+      required:
+        - id
+        - name
+        - email
